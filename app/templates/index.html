@@ -8,23 +8,21 @@
 </head>
 <body>
   <h1>Test用のコード</h1>
-  <form action="/index" method="POST">
+  <form action="/" method="POST">
     <input type="text" name="name" placeholder="Enter name">
     <input type="submit" value="Submit">
   </form>
 
   <h2>結果</h2>
-  <p>{{name}}</p>
   <p>{{account_li}}</p>
 
   <ul>
-    {% for Account in account_li: %}
-      {% set api = tweepy.API(auth) %}
+    {% for Account in account_li %}
       {% set tweets = api.user_timeline(Account, count=5, page=1) %}
-      {% for tweet in tweets: %}
-        <li>User : {{tweet.user.screen_name}}</li>
-        <li>Date : {{tweet.created_at}}</li>
-        <li>Contents :  {{tweet.text}}</li>
+      {% for tweet in tweets %}
+        <li>User : {{ tweet.user.screen_name }}</li>
+        <li>Date : {{ tweet.created_at }}</li>
+        <li>Contents :  {{ tweet.text }}</li>
       {% endfor %}
     {% endfor %}
   </ul>
