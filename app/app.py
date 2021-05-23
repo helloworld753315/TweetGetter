@@ -35,8 +35,9 @@ def post():
     #account_li = name.split() #取得したいユーザーのユーザーIDを代入
 
     account_li = name.split()
+    user_result = ' '.join(map(str, account_li))
 
-    return render_template("index.html", api = api, account_li = account_li)
+    return render_template("index.html", api = api, account_li = account_li,user_result = user_result)
 
 
 #おまじない
